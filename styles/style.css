@@ -1,78 +1,97 @@
+/* Schriftart MesloLGM Nerd Font Mono einbinden */
+@font-face {
+  font-family: 'MesloLGM Nerd Font Mono';
+  src: url('../fonts/MesloLGMNFM-Regular.woff2') format('woff2'),
+       url('../fonts/MesloLGMNFM-Regular.woff') format('woff'),
+       url('../fonts/MesloLGMNFM-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Grundlegende Stile */
 body {
-  margin: 0;
-  background-color: #002b36; /* Solarized Dark Hintergrund */
-  font-family: monospace;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    margin: 0;
+    background-color: #002b36; /* Solarized Dark Hintergrund */
+    font-family: 'MesloLGM Nerd Font Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 /* Terminal-Container */
 .terminal {
-  width: 90%;
-  max-width: 800px;
-  background-color: #073642; /* Solarized Dark Terminal-Hintergrund */
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  color: #839496;
+    width: 90%;
+    max-width: 800px;
+    background-color: #073642; /* Solarized Dark Terminal-Hintergrund */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #839496;
 }
 
 /* Header mit "Fenster-Knöpfen" */
 .header {
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  background-color: #002b36; /* Fensterleiste */
-  border-radius: 5px 5px 0 0;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background-color: #002b36; /* Fensterleiste */
+    border-radius: 5px 5px 0 0;
 }
 
 .dot {
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
-  margin-right: 5px;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
 }
 
 .red { background-color: #dc322f; } /* Solarized Rot */
 .yellow { background-color: #b58900; } /* Solarized Gelb */
 .green { background-color: #859900; } /* Solarized Grün */
 .title {
-  margin-left: auto;
-  color: #839496;
+    margin-left: auto;
+    color: #839496;
 }
 
 /* Terminal Body */
 .body {
-  padding: 10px;
+    padding: 10px;
 }
 
 /* Eingabe und Ausgabe */
 .output p {
-  margin: 0;
-  color: #93a1a1;
+    margin: 0;
+    color: #93a1a1;
 }
 
 .input-form {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
 }
 
 .prompt {
-  color: #268bd2; /* Solarized Blau */
-  margin-right: 5px;
+    color: #268bd2; /* Solarized Blau */
+    margin-right: 5px;
 }
 
 .input-field {
-  background: none;
-  border: none;
-  outline: none;
-  color: #839496; /* Terminal Textfarbe */
-  flex-grow: 1;
-  caret-color: #268bd2; /* Cursorfarbe */
+    background: none;
+    border: none;
+    outline: none;
+    color: #839496; /* Terminal Textfarbe */
+    flex-grow: 1;
+    caret-color: #268bd2; /* Cursorfarbe */
 }
 
 .input-field::placeholder {
-  color: #586e75; /* Ein
+    color: #586e75; /* Eingabe Platzhalterfarbe */
+}
+
+/* Responsivität */
+@media (max-width: 600px) {
+    .header, .body {
+        padding: 8px;
+    }
+}
