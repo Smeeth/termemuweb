@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Emulation</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <!-- Terminal-Container -->
+    <div class="terminal">
+        <div class="header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="title">Terminal - solarized dark</span>
+        </div>
+        <div class="body">
+            <div class="output">
+                <!-- Platzhalter für Ausgaben -->
+                <p>Willkommen im Terminal. Geben Sie einen Befehl ein:</p>
+            </div>
+            <form id="input-form" class="input-form" onsubmit="processCommand(event)">
+                <span class="prompt">user@localhost:~$</span>
+                <input type="text" id="command-input" autofocus autocomplete="off" class="input-field">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript-Funktion zur Befehlsverarbeitung
+        function processCommand(event) {
+            event.preventDefault();  // Verhindert das Neuladen der Seite
+            
+            // Eingabewert auslesen und leeren
+            const inputField = document.getElementById('command-input');
+            const command = inputField.value.trim();
+            inputField.value = '';
+
+            // Ausgabe-Bereich selektieren
+            const outputDiv = document.querySelector('.output');
+            
+            // Befehl anzeigen
+            const userCommand = document.createElement('p');
+            userCommand.textContent = `user@localhost:~$ ${command}`;
+            outputDiv.appendChild(userCommand);
+
+            // Antwort auf bekannte Befehle
+            const response = document.createElement('p');
+            if (command === 'help') {
+                response.textContent = 'Verfügbare Befehle: help, hello, clear';
+            } else if (command === 'hello') {
+                response.textContent = 'Hello, World!';
+            } else if (command === 'clear') {
+                outputDiv.innerHTML = ''; // Ausgabe leeren
+                return;
+            } else {
+                response.textContent = `Befehl nicht gefunden: ${command}`;
+            }
+
+            // Antwort im Terminal ausgeben
+            outputDiv.appendChild(response);
+            outputDiv.scrollTop = outputDiv.scrollHeight;  // Scrollt nach unten
+        }
+    </script>
+</body>
+</html>
